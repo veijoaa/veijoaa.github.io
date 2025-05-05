@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.sailo {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "menu content"
+    "footer footer";
+  grid-template-columns: 20% 80%;
+  gap: 5px;  
+  padding: 5px;
+  
+}
+.sailo > div {
+  background-color: rgba(148, 32, 32, 0.8);
+  padding: 10px;
+}
+.sailo > div.header {
+  grid-area: header;
+  text-align: center;
+  height:150px;
+  background-color: rgba(63, 32, 148, 0.8);
+}
+.sailo > div.menu {
+  grid-area: menu;
+}
+.sailo > div.content {
+  grid-area: content;
+}
+.sailo > div.footer {
+  grid-area: footer;
+}
+</style>
+</head>
+<body>
+
+<h1>CSS Grid Layout</h1>
+
+
+<div class="sailo">
+  <div class="header">
+    <h2>Firma</h2>
+  </div>
+
+  <div class="menu">
+    <a href="#">Link 1</a>
+    <br><a href="#">Link 2</a>
+    <br><a href="#">Link 3</a>
+  </div>
+  
+  <div class="content">
+    <h3>Otsikko</h3>
+    <p>
+      Tähän tulee juttua
+    </p>
+  </div>
+  <div class="footer"><h4>Footer</h4></div>
+</div>
+
+</body>
+</html>
