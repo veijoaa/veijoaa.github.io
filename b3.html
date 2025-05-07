@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Kolmipalstainen 100% leveä sisältö</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 3 tyylit -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- Bootstrapin JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <jumptron class="jumbotron text-center" style="background-color: #f5f5f5; margin-bottom: 0;">
+    <h1>My Company Name</h1>    
+    <p class="lead">Slogan or description goes here</p>
+    </jumptron>
+    
+<!-- Yläosa: yrityksen nimi ja navigaatio -->
+<header>
+  <!-- Yrityksen otsikko -->
+  <div class="container text-center" style="padding: 20px 0;">
+    <h1>My Company Name</h1>
+    <p class="lead">Slogan or description goes here</p>
+  </div>
+
+  <!-- Navigointipalkki -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li>
+        <li><a href="#">Page 3</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- Sivun pääsisältö, 100% leveydellä jaettuna 20-60-20 -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Vasen sarake: 2/12 = ~16.6% (noin 20%) -->
+    <div class="col-sm-2" style="background-color:#f9f9f9;">
+      <h4>Vasen</h4>
+      <p>Linkkejä tai valikkoja.</p>
+      <h3>Vertical Pills</h3>
+  <p> vertically stack pills:</p>
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Menu 1</a></li>
+    <li><a href="#">Menu 2</a></li>
+    <li><a href="#">Menu 3</a></li>
+  </ul>
+    </div>
+
+    <!-- Keskisarakke: 8/12 = ~66.6% (noin 60%) -->
+    <div class="col-sm-8" style="background-color:#ffffff;">
+      <h3>Keskisisältö</h3>
+      <p>Tähän tulee sivun varsinainen pääsisältö, esim. artikkeli tai lomake.</p>
+    </div>
+
+    <!-- Oikea sarake: 2/12 = ~16.6% (noin 20%) -->
+    <div class="col-sm-2" style="background-color:#f9f9f9;">
+      <h4>Oikea</h4>
+      <p>Mainoksia, infoa tai lisävalikko.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Alatunniste -->
+<footer class="container-fluid text-center" style="padding: 20px 0; margin-top: 30px; background-color: #f5f5f5;">
+  <p>&copy; 2025 My Company - All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+
