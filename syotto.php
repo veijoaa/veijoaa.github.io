@@ -17,9 +17,11 @@
         <?php
         session_start();
         $csrf_token = bin2hex(random_bytes(32));
+         // <!-- CSRF-token  sessio muuttuja-->
         $_SESSION['csrf_token'] = $csrf_token;
         ?>
-        <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
+        <!-- Piilokenttään tallennetaan myös CSRF-token. Tieto siirtyy myös post menetelmällä -->
+        <input type="text" name="csrf_token" value="<?= $csrf_token ?>">
 
         <input type="submit" value="Lähetä">
     </form>
