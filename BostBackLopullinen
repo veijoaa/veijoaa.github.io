@@ -1,0 +1,73 @@
+<?php
+
+//Käyttäjä täyttää lomakkeen → lähetetään vaihe = vahvistus
+
+//Yhteenveto näytetään → lähetetään vaihe = valmis
+
+//Lopuksi kiitosviesti ja mahdollisuus tehdä uusi tilaus
+
+//Käytetään $_SESSION säilyttämään tiedot vaiheiden välillä
+
+session_start();
+
+function puhdista($data) {
+    return htmlspecialchars(trim($data));
+}
+
+// Vaihe- ja tilakäsittely
+$vaihe = $_POST['vaihe'] ?? 'lomake';
+
+if ($vaihe == 'lomake') {
+    // Ensimmäinen vaihe – lomake
+    ?>
+    <h2>Laku Tilauksen Lomake</h2>
+    <form method="post">
+        Nimi: <input type="text" name="nimi" required><br><br>
+        Osoite: <input type="text" name="osoite" required><br><br>
+        Määrä (kpl): <input type="number" name="maara" required><br><br>
+        <input type="hidden" name="vaihe" value="vahvistus">
+        <input type="submit" value="Jatka">
+    </form>
+    <?php
+} elseif ($vaihe == 'vahvistus') {
+    // Toinen vaihe – yhteenveto
+    $nimi = puhdista($_POST['nimi']);
+    $osoite = puhdista($_POST['osoite']);
+    $maara = (int)$_POST['maara'];
+
+    // Tallennetaan sessioon tilapäisesti
+    $_SESSION['tilaus'] = [
+        'nimi' => $nimi,
+        'osoite' => $osoite,
+        'maara' => $maara
+    ];
+    ?>
+    <h2>Vahvista tilauksesi</h2>
+    <p><strong>Nimi:</strong> <?php echo $nimi; ?></p>
+    <p><strong>Osoite:</strong> <?php echo $osoite; ?></p>
+    <p><strong>Määrä:</strong> <?php echo $maara; ?> kpl</p>
+
+    <form method="post">
+        <input type="hidden" name="vaihe" value="valmis">
+        <input type="submit" value="Vahvista tilaus">
+    </form>
+    <?php
+} elseif ($vaihe == 'valmis') {
+    // Kolmas vaihe – valmis
+    $tilaus = $_SESSION['tilaus'] ?? null;
+
+    if ($tilaus) {
+        echo "<h2>Kiitos tilauksesta!</h2>";
+        echo "<p><strong>" . $tilaus['nimi'] . "</strong>, tilauksesi on vastaanotettu.</p>";
+        echo "<p>Toimitamme osoitteeseen: " . $tilaus['osoite'] . "</p>";
+        echo "<p>Määrä: " . $tilaus['maara'] . " kpl</p>";
+
+        // Tyhjennetään sessio (halutessa)
+        unset($_SESSION['tilaus']);
+    } else {
+        echo "<p>Virhe: Tilauksen tietoja ei löytynyt.</p>";
+    }
+
+    echo '<br><a href="' . $_SERVER['PHP_SELF'] . '">Tee uusi tilaus</a>';
+}
+?>
